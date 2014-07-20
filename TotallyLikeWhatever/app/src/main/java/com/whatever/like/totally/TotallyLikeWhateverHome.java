@@ -14,6 +14,7 @@ import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.view.View;
 import android.speech.*;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.os.Vibrator;
 import android.widget.ImageView;
@@ -265,9 +266,9 @@ public class TotallyLikeWhateverHome extends Activity {
         }
     }
 
-    public void onVibrateToggleClicked(View view) {
+    public void onVibrateSwitched(View view) {
         // Is the toggle on?
-        boolean on = ((ToggleButton) view).isChecked();
+        boolean on = ((Switch) view).isChecked();
 
         if (on) {
             vibrate = true;
@@ -276,9 +277,9 @@ public class TotallyLikeWhateverHome extends Activity {
         }
     }
 
-    public void onSoundToggleClicked(View view) {
+    public void onSoundSwitched(View view) {
         // Is the toggle on?
-        boolean on = ((ToggleButton) view).isChecked();
+        boolean on = ((Switch) view).isChecked();
 
         if (on) {
             sound = true;

@@ -41,38 +41,48 @@
         <Button
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:text="@string/start"
             android:background="@drawable/rounded_button"
             android:id="@+id/dummy_button"
             style="?android:attr/borderlessButtonStyle"
             android:layout_gravity="center" />
 
-        <TextView android:id="@+id/text_pace"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:keepScreenOn="true"
-            android:textColor="@color/black_overlay"
-            android:textSize="25sp"
-            android:gravity="center"
-            android:layout_gravity="center_horizontal|bottom" />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="left|bottom">
+            <Switch
+                android:id="@+id/soundswitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textOn="Sound on"
+                android:textOff="Sound off"
+                android:onClick="onSoundSwitched"
+                android:layout_gravity="left|bottom"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true" />
 
-        <ToggleButton
-            android:id="@+id/soundtogglebutton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textOn="Sound on"
-            android:textOff="Sound off"
-            android:onClick="onSoundToggleClicked"
-            android:layout_gravity="left|center_vertical" />
+            <Switch
+                android:id="@+id/vibrateswitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textOn="Vibrate on"
+                android:textOff="Vibrate off"
+                android:onClick="onVibrateSwitched"
+                android:layout_gravity="right|bottom"
+                android:layout_alignTop="@+id/soundswitch"
+                android:layout_alignParentStart="true" />
 
-        <ToggleButton
-            android:id="@+id/vibratetogglebutton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textOn="Vibrate on"
-            android:textOff="Vibrate off"
-            android:onClick="onVibrateToggleClicked"
-            android:layout_gravity="right|center_vertical" />
+            <TextView android:id="@+id/text_pace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:keepScreenOn="true"
+                android:textColor="@color/black_overlay"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_above="@+id/soundswitch"
+                android:layout_alignParentStart="true" />
+        </RelativeLayout>
 
 
     </FrameLayout>

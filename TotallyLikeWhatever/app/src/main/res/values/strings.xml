@@ -2,7 +2,6 @@
 <resources>
 
     <string name="app_name">Totally Like Whatever</string>
-    <string name="start">Start Recording</string>
-    <string name="start_inst">Press Start</string>
+    <string name="start_inst">Press Face to Start</string>
 
 </resources>
