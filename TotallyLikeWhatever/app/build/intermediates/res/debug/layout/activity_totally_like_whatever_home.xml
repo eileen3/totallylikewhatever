@@ -1,0 +1,65 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0099cc"
+    tools:context=".TotallyLikeWhateverHome">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+    <TextView android:id="@+id/fullscreen_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:keepScreenOn="true"
+        android:textColor="#33b5e5"
+        android:textStyle="bold"
+        android:textSize="50sp"
+        android:gravity="center"
+        android:text="@string/dummy_content" />
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+    <FrameLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent">
+
+            <LinearLayout android:id="@+id/text_display_area"
+                style="?metaButtonBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal"
+                android:background="@color/white_overlay"
+                android:orientation="vertical"
+                android:textAlignment="center"
+                tools:ignore="UselessParent">
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout android:id="@+id/fullscreen_content_controls"
+            style="?metaButtonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:text="@string/start"
+            android:background="@drawable/rounded_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:id="@+id/dummy_button"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+</FrameLayout>
+<!-- From: file:/Users/eileen/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/layout/activity_totally_like_whatever_home.xml -->
