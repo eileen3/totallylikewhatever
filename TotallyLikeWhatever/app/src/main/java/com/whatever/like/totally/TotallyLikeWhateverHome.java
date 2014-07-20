@@ -47,7 +47,8 @@ public class TotallyLikeWhateverHome extends Activity {
     private int flaggedCount = 0;
     private ArrayList<String> flaggedWords;
     private ArrayList<String> flaggedPhrases;
-    private boolean buttonEnabled = true;
+    private Intent intent;
+    private boolean listening = false;
     private boolean vibrate = false;
     private boolean sound = false;
 
@@ -57,8 +58,7 @@ public class TotallyLikeWhateverHome extends Activity {
 
         setContentView(R.layout.activity_totally_like_whatever_home);
 
-        final View controlsView = findViewById(R.id.fullscreen_content_controls);
-
+        // vibration
         vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         ring = RingtoneManager.getRingtone(getApplicationContext(), notification);
@@ -66,7 +66,7 @@ public class TotallyLikeWhateverHome extends Activity {
         myText = (TextView)findViewById(R.id.text_area);
         myPace = (TextView)findViewById(R.id.text_pace);
 
-        talking_button = (Button) findViewById(R.id.dummy_button);
+        talking_button = (Button) findViewById(R.id.start_button);
 
         flaggedWords = new ArrayList<String>();
         flaggedWords.add("like");
@@ -90,6 +90,16 @@ public class TotallyLikeWhateverHome extends Activity {
         flaggedPhrases.add("sort of");
         flaggedPhrases.add("i mean");
 
+        // settings for the listening task
+        intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_RESULTS, true);
+        intent.putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, true);
+        intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, 3000L);
+        intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_COMPLETE_SILENCE_LENGTH_MILLIS, new Long(15000));
+        intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_POSSIBLY_COMPLETE_SILENCE_LENGTH_MILLIS, new Long(15000));
+
         receive.setRecognitionListener(new RecognitionListener() {
             @Override
             public void onBeginningOfSpeech() {
@@ -106,7 +116,9 @@ public class TotallyLikeWhateverHome extends Activity {
             public void onRmsChanged(float rmsdB) { }
 
             public void onEndOfSpeech() {
-                buttonEnabled = true;
+                listening = false;
+
+
                 /*
                 LinearLayout lView = (LinearLayout)findViewById(R.id.text_display_area);
                 myText.setText("Finished!");
@@ -125,9 +137,7 @@ public class TotallyLikeWhateverHome extends Activity {
             public void onBufferReceived(byte[] buffer) {
             }
 
-            public void onPartialResults(Bundle partialResults) {
-                onResults(partialResults);
-            }
+            public void onResults(Bundle results) { onPartialResults(results); }
 
             public void onReadyForSpeech(Bundle bundle) {
                 //LinearLayout lView = (LinearLayout)findViewById(R.id.text_display_area);
@@ -144,7 +154,7 @@ public class TotallyLikeWhateverHome extends Activity {
                 }
             }
 
-            public void onResults(Bundle results) {
+            public void onPartialResults(Bundle results) {
                 //LinearLayout lView = (LinearLayout)findViewById(R.id.text_display_area);
 
                 ArrayList<String> returnedStrings = results.getStringArrayList(
@@ -184,32 +194,20 @@ public class TotallyLikeWhateverHome extends Activity {
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        findViewById(R.id.dummy_button).setOnClickListener(mPressed);
-    }
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-
+        findViewById(R.id.start_button).setOnClickListener(mPressed);
     }
 
     View.OnClickListener mPressed = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             // disable button
-            if (!buttonEnabled)
-                return;
-            buttonEnabled = false;
-
-            // listening stuff
-            Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                    RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-            intent.putExtra(RecognizerIntent.EXTRA_RESULTS, true);
-            intent.putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, true);
-            intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, 3000L);
-
-            receive.startListening(intent);
+            if (listening) {
+                listening = false;
+                receive.stopListening();
+            } else {
+                listening = true;
+                receive.startListening(intent);
+            }
         }
     };
 
