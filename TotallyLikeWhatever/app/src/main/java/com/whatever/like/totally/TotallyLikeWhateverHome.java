@@ -67,6 +67,7 @@ public class TotallyLikeWhateverHome extends Activity {
         myPace = (TextView)findViewById(R.id.text_pace);
 
         talking_button = (Button) findViewById(R.id.start_button);
+        talking_button.setBackgroundResource(R.drawable.talking);
 
         flaggedWords = new ArrayList<String>();
         flaggedWords.add("like");
@@ -147,8 +148,6 @@ public class TotallyLikeWhateverHome extends Activity {
                 flaggedCount = 0;
 
                 //lView.addView(myText);
-
-                talking_button.setBackgroundResource(R.drawable.talking);
                 animation = talking_button.getBackground();
                 if (animation instanceof AnimationDrawable) {
                     talking_animation = (AnimationDrawable) animation;
@@ -162,8 +161,8 @@ public class TotallyLikeWhateverHome extends Activity {
                         SpeechRecognizer.RESULTS_RECOGNITION);
                 if (returnedStrings != null && returnedStrings.size() > 0) {
                     new CheckFlaggedWordsTask().execute(returnedStrings.get(0));
-                    myText.setText(String.format("You've said a flagged word %d times\n\n%s",
-                            flaggedCount, returnedStrings.get(0)));
+                    myText.setText(String.format("You've said a flagged word %d times\n",
+                            flaggedCount));
 
                     if (endTime != null && startTime != null) {
                         int duration = endTime - startTime;
@@ -234,20 +233,22 @@ public class TotallyLikeWhateverHome extends Activity {
                 newFlaggedCount += count;
             }
             if (newFlaggedCount > flaggedCount) {
-                if (vibrate == true) {
-                    vib.vibrate(400);
-                }
-                if (sound == true) {
-                    ring.play();
-                }
-                publishProgress(getResources().getColor(R.color.red));
-                findViewById(R.id.scrolling_area).postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        findViewById(R.id.scrolling_area).setBackgroundColor(
-                                getResources().getColor(R.color.cyan));
+                if (newFlaggedCount % 2 == 0){
+                    if (vibrate == true) {
+                        vib.vibrate(400);
                     }
-                }, 250);
+                    if (sound == true) {
+                        ring.play();
+                    }
+                    publishProgress(getResources().getColor(R.color.red));
+                    findViewById(R.id.scrolling_area).postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            findViewById(R.id.scrolling_area).setBackgroundColor(
+                                    getResources().getColor(R.color.cyan));
+                        }
+                    }, 250);
+                }
                 flaggedCount = newFlaggedCount;
             }
             return returnedStrings[0];
@@ -260,8 +261,8 @@ public class TotallyLikeWhateverHome extends Activity {
         /** The system calls this to perform work in the UI thread and delivers
          * the result from doInBackground() */
         protected void onPostExecute(String returnedString) {
-            myText.setText(String.format("You've said a flagged word %d times\n\n%s",
-                    flaggedCount, returnedString));
+            myText.setText(String.format("You've said a flagged word %d times\n",
+                    flaggedCount));
         }
     }
 

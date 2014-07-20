@@ -21,7 +21,7 @@
                 android:keepScreenOn="true"
                 android:textColor="@color/black_overlay"
                 android:textStyle="bold"
-                android:textSize="25sp"
+                android:textSize="35sp"
                 android:gravity="center"
                 android:text="@string/start_inst" />
 
@@ -39,8 +39,8 @@
         </LinearLayout>
 
         <Button
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
             android:background="@drawable/rounded_button"
             android:id="@+id/start_button"
             style="?android:attr/borderlessButtonStyle"
@@ -88,4 +88,4 @@
     </FrameLayout>
 
 </FrameLayout>
-<!-- From: file:/Users/nitish/Documents/Other/AngelHacks/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/layout/activity_totally_like_whatever_home.xml -->
+<!-- From: file:/Users/eileen/totallylikewhatever/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/layout/activity_totally_like_whatever_home.xml -->
