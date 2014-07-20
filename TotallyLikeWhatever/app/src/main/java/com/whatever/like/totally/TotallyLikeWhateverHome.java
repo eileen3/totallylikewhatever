@@ -76,6 +76,7 @@ public class TotallyLikeWhateverHome extends Activity {
         flaggedWords.add("so");
         flaggedWords.add("obviously");
         flaggedWords.add("ohmygod");
+        flaggedWords.add("yo");
 
         flaggedPhrases = new ArrayList<String>();
         flaggedPhrases.add("but actually");
