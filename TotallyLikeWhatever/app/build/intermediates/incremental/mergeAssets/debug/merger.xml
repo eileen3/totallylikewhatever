@@ -2,10 +2,10 @@
 <merger version="2" >
 
     <dataSet config="main" >
-        <source path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/assets" />
+        <source path="/Users/nitish/Documents/Other/AngelHacks/totallylikewhatever/TotallyLikeWhatever/app/src/main/assets" />
     </dataSet>
     <dataSet config="debug" >
-        <source path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/debug/assets" />
+        <source path="/Users/nitish/Documents/Other/AngelHacks/totallylikewhatever/TotallyLikeWhatever/app/src/debug/assets" />
     </dataSet>
 
 </merger>

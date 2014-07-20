@@ -57,7 +57,7 @@ public class TotallyLikeWhateverHome extends Activity {
         flaggedPhrases.add("bear with me");
         flaggedPhrases.add("moving right along");
         flaggedPhrases.add("sort of");
-        flaggedPhrases.add("I mean");
+        flaggedPhrases.add("i mean");
 
         receive.setRecognitionListener(new RecognitionListener() {
             @Override
@@ -181,8 +181,8 @@ public class TotallyLikeWhateverHome extends Activity {
                 }
             }
             for (String phrase : flaggedPhrases) {
-                int count = (String.format(" %s ", returnedStrings[0])).replace(" ", "  ").
-                        split(String.format(" %s ", phrase.replace(" ", "  "))).length - 1;
+                int count = (String.format(" %s ", returnedStrings[0])).toLowerCase().replace(" ",
+                        "  ").split(String.format(" %s ", phrase.replace(" ", "  "))).length - 1;
                 newFlaggedCount += count;
             }
             if (newFlaggedCount > flaggedCount) {

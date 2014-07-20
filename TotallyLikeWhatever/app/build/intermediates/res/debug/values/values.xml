@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- From: file:/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/Users/nitish/Documents/Other/AngelHacks/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/colors.xml -->
     <eat-comment />
 
     <color name="black">#FF000000</color>
@@ -11,20 +11,20 @@
     <color name="red">#cc0000</color>
     <color name="transparent">#00000000</color>
     <color name="white_overlay">#66FFFFFF</color>
-    <!-- From: file:/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/attrs.xml -->
+    <!-- From: file:/Users/nitish/Documents/Other/AngelHacks/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/attrs.xml -->
     <eat-comment />
 
     <declare-styleable name="ButtonBarContainerTheme">
         <attr name="metaButtonBarStyle" format="reference" />
         <attr name="metaButtonBarButtonStyle" format="reference" />
     </declare-styleable>
-    <!-- From: file:/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/nitish/Documents/Other/AngelHacks/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/strings.xml -->
     <eat-comment />
 
     <string name="app_name">Totally Like Whatever</string>
     <string name="start">Start Recording</string>
     <string name="start_inst">Press Start</string>
-    <!-- From: file:/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/Users/nitish/Documents/Other/AngelHacks/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/styles.xml -->
     <eat-comment />
 
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">

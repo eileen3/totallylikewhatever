@@ -2,39 +2,39 @@
 <merger version="2" >
 
     <dataSet config="main" >
-        <source path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res" >
+        <source path="/Users/nitish/Documents/Other/AngelHacks/totallylikewhatever/TotallyLikeWhatever/app/src/main/res" >
             <file
                 name="ic_launcher"
-                path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/drawable-hdpi/ic_launcher.png"
+                path="/Users/nitish/Documents/Other/AngelHacks/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/drawable-hdpi/ic_launcher.png"
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="ic_launcher"
-                path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/drawable-mdpi/ic_launcher.png"
+                path="/Users/nitish/Documents/Other/AngelHacks/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/drawable-mdpi/ic_launcher.png"
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="rounded_button"
-                path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/drawable-mdpi/rounded_button.xml"
+                path="/Users/nitish/Documents/Other/AngelHacks/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/drawable-mdpi/rounded_button.xml"
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="ic_launcher"
-                path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/drawable-xhdpi/ic_launcher.png"
+                path="/Users/nitish/Documents/Other/AngelHacks/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/drawable-xhdpi/ic_launcher.png"
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="ic_launcher"
-                path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/drawable-xxhdpi/ic_launcher.png"
+                path="/Users/nitish/Documents/Other/AngelHacks/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/drawable-xxhdpi/ic_launcher.png"
                 qualifiers="xxhdpi-v4"
                 type="drawable" />
             <file
                 name="activity_totally_like_whatever_home"
-                path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/layout/activity_totally_like_whatever_home.xml"
+                path="/Users/nitish/Documents/Other/AngelHacks/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/layout/activity_totally_like_whatever_home.xml"
                 qualifiers=""
                 type="layout" />
             <file
-                path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/attrs.xml"
+                path="/Users/nitish/Documents/Other/AngelHacks/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/attrs.xml"
                 qualifiers="" >
                 <declare-styleable name="ButtonBarContainerTheme" >
                     <attr
@@ -46,7 +46,7 @@
                 </declare-styleable>
             </file>
             <file
-                path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/colors.xml"
+                path="/Users/nitish/Documents/Other/AngelHacks/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/colors.xml"
                 qualifiers="" >
                 <color name="green" >#99CC00
                 </color>
@@ -64,7 +64,7 @@
                 </color>
             </file>
             <file
-                path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/strings.xml"
+                path="/Users/nitish/Documents/Other/AngelHacks/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/strings.xml"
                 qualifiers="" >
                 <string name="start" >Start Recording
                 </string>
@@ -74,7 +74,7 @@
                 </string>
             </file>
             <file
-                path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/styles.xml"
+                path="/Users/nitish/Documents/Other/AngelHacks/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/styles.xml"
                 qualifiers="" >
 
                 <style name="ButtonBar" >
@@ -122,7 +122,7 @@
                 </style>
             </file>
             <file
-                path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values-v11/styles.xml"
+                path="/Users/nitish/Documents/Other/AngelHacks/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values-v11/styles.xml"
                 qualifiers="v11" >
 
                 <style
@@ -154,11 +154,11 @@ true
                 </style>
             </file>
         </source>
-        <source path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/build/generated/res/rs/debug" />
-        <source path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/build/generated/res/generated/debug" />
+        <source path="/Users/nitish/Documents/Other/AngelHacks/totallylikewhatever/TotallyLikeWhatever/app/build/generated/res/rs/debug" />
+        <source path="/Users/nitish/Documents/Other/AngelHacks/totallylikewhatever/TotallyLikeWhatever/app/build/generated/res/generated/debug" />
     </dataSet>
     <dataSet config="debug" >
-        <source path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/debug/res" />
+        <source path="/Users/nitish/Documents/Other/AngelHacks/totallylikewhatever/TotallyLikeWhatever/app/src/debug/res" />
     </dataSet>
 
 </merger>
