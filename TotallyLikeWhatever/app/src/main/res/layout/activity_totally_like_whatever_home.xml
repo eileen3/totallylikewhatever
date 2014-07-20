@@ -17,7 +17,7 @@
 
             <TextView android:id="@+id/text_area"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:keepScreenOn="true"
                 android:textColor="@color/black_overlay"
                 android:textStyle="bold"
@@ -35,14 +35,15 @@
             android:orientation="horizontal"
             tools:ignore="UselessParent">
 
-            <Button android:id="@+id/dummy_button"
-                style="?metaButtonBarButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/dummy_button" />
-
         </LinearLayout>
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:text="@string/start"
+            android:background="@drawable/rounded_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_gravity="center" />
     </FrameLayout>
 
 </FrameLayout>

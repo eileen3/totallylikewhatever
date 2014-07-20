@@ -6,5 +6,6 @@
     <color name="black">#FF000000</color>
     <color name="cyan">#0099cc</color>
     <color name="red">#cc0000</color>
+    <color name="green">#99CC00</color>
 
 </resources>
