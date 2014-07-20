@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.os.Vibrator;
 import android.widget.ImageView;
 import android.widget.Button;
+import android.widget.ToggleButton;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -31,6 +32,23 @@ import java.util.Calendar;
  * @see SystemUiHider
  */
 public class TotallyLikeWhateverHome extends Activity {
+
+    private Integer startTime;
+    private Integer endTime;
+    private Drawable animation;
+    private AnimationDrawable talking_animation;
+    private TextView myPace = null;
+    private TextView myText = null;
+    private Button talking_button = null;
+    private Context self = this;
+    private Activity me = this;
+    private SpeechRecognizer receive = SpeechRecognizer.createSpeechRecognizer(this);
+    private int flaggedCount = 0;
+    private ArrayList<String> flaggedWords;
+    private ArrayList<String> flaggedPhrases;
+    private boolean buttonEnabled = true;
+    private boolean vibrate = false;
+    private boolean sound = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,20 +191,7 @@ public class TotallyLikeWhateverHome extends Activity {
         super.onPostCreate(savedInstanceState);
 
     }
-    private Integer startTime;
-    private Integer endTime;
-    private Drawable animation;
-    private AnimationDrawable talking_animation;
-    private TextView myPace = null;
-    private TextView myText = null;
-    private Button talking_button = null;
-    private Context self = this;
-    private Activity me = this;
-    private SpeechRecognizer receive = SpeechRecognizer.createSpeechRecognizer(this);
-    private int flaggedCount = 0;
-    private ArrayList<String> flaggedWords;
-    private ArrayList<String> flaggedPhrases;
-    private boolean buttonEnabled = true;
+
     View.OnClickListener mPressed = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -229,8 +234,12 @@ public class TotallyLikeWhateverHome extends Activity {
                 newFlaggedCount += count;
             }
             if (newFlaggedCount > flaggedCount) {
-                vib.vibrate(400);
-                ring.play();
+                if (vibrate == true) {
+                    vib.vibrate(400);
+                }
+                if (sound == true) {
+                    ring.play();
+                }
                 publishProgress(getResources().getColor(R.color.red));
                 findViewById(R.id.scrolling_area).postDelayed(new Runnable() {
                     @Override
@@ -253,6 +262,28 @@ public class TotallyLikeWhateverHome extends Activity {
         protected void onPostExecute(String returnedString) {
             myText.setText(String.format("You've said a flagged word %d times\n\n%s",
                     flaggedCount, returnedString));
+        }
+    }
+
+    public void onVibrateToggleClicked(View view) {
+        // Is the toggle on?
+        boolean on = ((ToggleButton) view).isChecked();
+
+        if (on) {
+            vibrate = true;
+        } else {
+            vibrate = false;
+        }
+    }
+
+    public void onSoundToggleClicked(View view) {
+        // Is the toggle on?
+        boolean on = ((ToggleButton) view).isChecked();
+
+        if (on) {
+            sound = true;
+        } else {
+            sound = false;
         }
     }
 }

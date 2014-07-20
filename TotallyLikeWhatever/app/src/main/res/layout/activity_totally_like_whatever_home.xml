@@ -56,15 +56,24 @@
             android:gravity="center"
             android:layout_gravity="center_horizontal|bottom" />
 
-        <ImageView
-            android:id="@+id/talking"
-            android:contentDescription="My Animation"
-            android:layout_width="match_parent"
+        <ToggleButton
+            android:id="@+id/soundtogglebutton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="37dp"
-            android:src="@drawable/talking"
-            android:visibility="invisible"
-            android:layout_gravity="center" />
+            android:textOn="Sound on"
+            android:textOff="Sound off"
+            android:onClick="onSoundToggleClicked"
+            android:layout_gravity="left|center_vertical" />
+
+        <ToggleButton
+            android:id="@+id/vibratetogglebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOn="Vibrate on"
+            android:textOff="Vibrate off"
+            android:onClick="onVibrateToggleClicked"
+            android:layout_gravity="right|center_vertical" />
+
 
     </FrameLayout>
 
