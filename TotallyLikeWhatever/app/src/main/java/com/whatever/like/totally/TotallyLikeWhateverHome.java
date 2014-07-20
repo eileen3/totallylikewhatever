@@ -6,9 +6,11 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.speech.*;
@@ -100,16 +102,7 @@ public class TotallyLikeWhateverHome extends Activity {
                 ArrayList<String> returnedStrings = results.getStringArrayList(
                         SpeechRecognizer.RESULTS_RECOGNITION);
                 if (returnedStrings != null && returnedStrings.size() > 0) {
-                    String[] words = returnedStrings.get(0).split(" ");
-                    int newFlaggedCount = 0;
-                    for (String word : words) {
-                        if (flaggedWords.contains(word)) {
-                            newFlaggedCount++;
-                        }
-                    }
-                    if (newFlaggedCount > flaggedCount)
-                        flashRed();
-                    flaggedCount = newFlaggedCount;
+                    new CheckFlaggedWordsTask().execute(returnedStrings.get(0));
                     myText.setText(String.format("You've said a flagged word %d times\n\n%s",
                             flaggedCount, returnedStrings.get(0)));
 
@@ -145,6 +138,7 @@ public class TotallyLikeWhateverHome extends Activity {
 
     private TextView myText = null;
     private Context self = this;
+    private Activity me = this;
     private SpeechRecognizer receive = SpeechRecognizer.createSpeechRecognizer(this);
     private int flaggedCount = 0;
     private ArrayList<String> flaggedWords;
@@ -169,12 +163,40 @@ public class TotallyLikeWhateverHome extends Activity {
         }
     };
 
-    /**
-     * Schedules a call to hide() in [delay] milliseconds, canceling any
-     * previously scheduled calls.
-     */
-    private void flashRed() {
-        findViewById(R.id.scrolling_area).setBackgroundColor(getResources().getColor(R.color.red));
-        findViewById(R.id.scrolling_area).setBackgroundColor(getResources().getColor(R.color.cyan));
+    private class CheckFlaggedWordsTask extends AsyncTask<String, Integer, String> {
+        /** The system calls this to perform work in a worker thread and
+         * delivers it the parameters given to AsyncTask.execute() */
+        protected String doInBackground(String... returnedStrings) {
+            String[] words = returnedStrings[0].split(" ");
+            int newFlaggedCount = 0;
+            for (String word : words) {
+                if (flaggedWords.contains(word)) {
+                    newFlaggedCount++;
+                }
+            }
+            if (newFlaggedCount > flaggedCount) {
+                publishProgress(getResources().getColor(R.color.red));
+                findViewById(R.id.scrolling_area).postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        findViewById(R.id.scrolling_area).setBackgroundColor(
+                                getResources().getColor(R.color.cyan));
+                    }
+                }, 250);
+                flaggedCount = newFlaggedCount;
+            }
+            return returnedStrings[0];
+        }
+
+        protected void onProgressUpdate(Integer... color) {
+            findViewById(R.id.scrolling_area).setBackgroundColor(color[0]);
+        }
+
+        /** The system calls this to perform work in the UI thread and delivers
+         * the result from doInBackground() */
+        protected void onPostExecute(String returnedString) {
+            myText.setText(String.format("You've said a flagged word %d times\n\n%s",
+                    flaggedCount, returnedString));
+        }
     }
 }
