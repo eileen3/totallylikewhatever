@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Totally Like Whatever</string>
+    <string name="dummy_button">Start</string>
+    <string name="start_inst">Press Start</string>
+
+</resources>
