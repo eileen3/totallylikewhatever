@@ -2,34 +2,39 @@
 <merger version="2" >
 
     <dataSet config="main" >
-        <source path="/Users/eileen/totallylikewhatever/TotallyLikeWhatever/app/src/main/res" >
+        <source path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res" >
             <file
                 name="ic_launcher"
-                path="/Users/eileen/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/drawable-hdpi/ic_launcher.png"
+                path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/drawable-hdpi/ic_launcher.png"
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="ic_launcher"
-                path="/Users/eileen/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/drawable-mdpi/ic_launcher.png"
+                path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/drawable-mdpi/ic_launcher.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="rounded_button"
+                path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/drawable-mdpi/rounded_button.xml"
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="ic_launcher"
-                path="/Users/eileen/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/drawable-xhdpi/ic_launcher.png"
+                path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/drawable-xhdpi/ic_launcher.png"
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="ic_launcher"
-                path="/Users/eileen/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/drawable-xxhdpi/ic_launcher.png"
+                path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/drawable-xxhdpi/ic_launcher.png"
                 qualifiers="xxhdpi-v4"
                 type="drawable" />
             <file
                 name="activity_totally_like_whatever_home"
-                path="/Users/eileen/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/layout/activity_totally_like_whatever_home.xml"
+                path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/layout/activity_totally_like_whatever_home.xml"
                 qualifiers=""
                 type="layout" />
             <file
-                path="/Users/eileen/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/attrs.xml"
+                path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/attrs.xml"
                 qualifiers="" >
                 <declare-styleable name="ButtonBarContainerTheme" >
                     <attr
@@ -41,11 +46,13 @@
                 </declare-styleable>
             </file>
             <file
-                path="/Users/eileen/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/colors.xml"
+                path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/colors.xml"
                 qualifiers="" >
                 <color name="green" >#99CC00
                 </color>
                 <color name="black" >#FF000000
+                </color>
+                <color name="red" >#cc0000
                 </color>
                 <color name="transparent" >#00000000
                 </color>
@@ -53,19 +60,21 @@
                 </color>
                 <color name="black_overlay" >#66000000
                 </color>
+                <color name="cyan" >#0099cc
+                </color>
             </file>
             <file
-                path="/Users/eileen/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/strings.xml"
+                path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/strings.xml"
                 qualifiers="" >
                 <string name="start" >Start Recording
                 </string>
                 <string name="app_name" >Totally Like Whatever
                 </string>
-                <string name="dummy_content" >DUMMY\nCONTENT
+                <string name="start_inst" >Press Start
                 </string>
             </file>
             <file
-                path="/Users/eileen/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/styles.xml"
+                path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values/styles.xml"
                 qualifiers="" >
 
                 <style name="ButtonBar" >
@@ -113,7 +122,7 @@
                 </style>
             </file>
             <file
-                path="/Users/eileen/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values-v11/styles.xml"
+                path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/values-v11/styles.xml"
                 qualifiers="v11" >
 
                 <style
@@ -144,17 +153,12 @@ true
                     </item>
                 </style>
             </file>
-            <file
-                name="rounded_button"
-                path="/Users/eileen/totallylikewhatever/TotallyLikeWhatever/app/src/main/res/drawable-mdpi/rounded_button.xml"
-                qualifiers="mdpi-v4"
-                type="drawable" />
         </source>
-        <source path="/Users/eileen/totallylikewhatever/TotallyLikeWhatever/app/build/generated/res/rs/debug" />
-        <source path="/Users/eileen/totallylikewhatever/TotallyLikeWhatever/app/build/generated/res/generated/debug" />
+        <source path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/build/generated/res/rs/debug" />
+        <source path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/build/generated/res/generated/debug" />
     </dataSet>
     <dataSet config="debug" >
-        <source path="/Users/eileen/totallylikewhatever/TotallyLikeWhatever/app/src/debug/res" />
+        <source path="/Users/eileen_li10648/totallylikewhatever/TotallyLikeWhatever/app/src/debug/res" />
     </dataSet>
 
 </merger>

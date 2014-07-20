@@ -21,9 +21,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     public static final class color {
         public static final int black=0x7f040000;
         public static final int black_overlay=0x7f040001;
-        public static final int green=0x7f040002;
-        public static final int transparent=0x7f040003;
-        public static final int white_overlay=0x7f040004;
+        public static final int cyan=0x7f040002;
+        public static final int green=0x7f040003;
+        public static final int red=0x7f040004;
+        public static final int transparent=0x7f040005;
+        public static final int white_overlay=0x7f040006;
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
@@ -31,17 +33,17 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class id {
         public static final int dummy_button=0x7f070003;
-        public static final int fullscreen_content=0x7f070000;
         public static final int fullscreen_content_controls=0x7f070002;
-        public static final int text_display_area=0x7f070001;
+        public static final int scrolling_area=0x7f070000;
+        public static final int text_area=0x7f070001;
     }
     public static final class layout {
         public static final int activity_totally_like_whatever_home=0x7f030000;
     }
     public static final class string {
         public static final int app_name=0x7f050000;
-        public static final int dummy_content=0x7f050001;
-        public static final int start=0x7f050002;
+        public static final int start=0x7f050001;
+        public static final int start_inst=0x7f050002;
     }
     public static final class style {
         /**  Customize your theme here. 

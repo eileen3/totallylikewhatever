@@ -2,22 +2,17 @@ package com.whatever.like.totally;
 
 import com.whatever.like.totally.util.SystemUiHider;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
-import android.view.MotionEvent;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
 import android.view.View;
 import android.speech.*;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import java.util.ArrayDeque;
+import android.os.Vibrator;
 import java.util.ArrayList;
 
 
@@ -28,28 +23,6 @@ import java.util.ArrayList;
  * @see SystemUiHider
  */
 public class TotallyLikeWhateverHome extends Activity {
-    /**
-     * Whether or not the system UI should be auto-hidden after
-     * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
-     */
-    private static final boolean AUTO_HIDE = true;
-
-    /**
-     * If {@link #AUTO_HIDE} is set, the number of milliseconds to wait after
-     * user interaction before hiding the system UI.
-     */
-    private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
-
-    /**
-     * If set, will toggle the system UI visibility upon interaction. Otherwise,
-     * will show the system UI visibility upon interaction.
-     */
-    private static final boolean TOGGLE_ON_CLICK = true;
-
-    /**
-     * The flags to pass to {@link SystemUiHider#getInstance}.
-     */
-    private static final int HIDER_FLAGS = SystemUiHider.FLAG_HIDE_NAVIGATION;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +32,10 @@ public class TotallyLikeWhateverHome extends Activity {
 
         final View controlsView = findViewById(R.id.fullscreen_content_controls);
 
+        vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        ring = RingtoneManager.getRingtone(getApplicationContext(), notification);
+
         myText = (TextView)findViewById(R.id.text_area);
         flaggedWords = new ArrayList<String>();
         flaggedWords.add("like");
@@ -66,10 +43,30 @@ public class TotallyLikeWhateverHome extends Activity {
         flaggedWords.add("um");
         flaggedWords.add("umm");
         flaggedWords.add("so");
+        flaggedWords.add("obviously");
+        flaggedWords.add("ohmygod");
+
+        flaggedPhrases = new ArrayList<String>();
+        flaggedPhrases.add("but actually");
+        flaggedPhrases.add("oh my god");
+        flaggedPhrases.add("sorry but");
+        flaggedPhrases.add("you know");
+        flaggedPhrases.add("a little bit");
+        flaggedPhrases.add("sorry if");
+        flaggedPhrases.add("sorry for");
+        flaggedPhrases.add("bear with me");
+        flaggedPhrases.add("moving right along");
+        flaggedPhrases.add("sort of");
+        flaggedPhrases.add("I mean");
+
         receive.setRecognitionListener(new RecognitionListener() {
             @Override
-            public void onBeginningOfSpeech() { }
-            public void onRmsChanged(float rmsdB) { }
+            public void onBeginningOfSpeech() {
+            }
+
+            public void onRmsChanged(float rmsdB) {
+            }
+
             public void onEndOfSpeech() {
                 buttonEnabled = true;
                 /*
@@ -80,8 +77,12 @@ public class TotallyLikeWhateverHome extends Activity {
 
                 lView.addView(myText);*/
             }
-            public void onEvent(int eventType, Bundle params) { }
-            public void onBufferReceived(byte[] buffer) { }
+
+            public void onEvent(int eventType, Bundle params) {
+            }
+
+            public void onBufferReceived(byte[] buffer) {
+            }
 
             public void onPartialResults(Bundle partialResults) {
                 onResults(partialResults);
@@ -107,8 +108,7 @@ public class TotallyLikeWhateverHome extends Activity {
                             flaggedCount, returnedStrings.get(0)));
 
                     //lView.addView(myText);
-                }
-                else {
+                } else {
                     myText.setText("Nothing returned.");
 
                     //lView.addView(myText);
@@ -142,6 +142,7 @@ public class TotallyLikeWhateverHome extends Activity {
     private SpeechRecognizer receive = SpeechRecognizer.createSpeechRecognizer(this);
     private int flaggedCount = 0;
     private ArrayList<String> flaggedWords;
+    private ArrayList<String> flaggedPhrases;
     private boolean buttonEnabled = true;
     View.OnClickListener mPressed = new View.OnClickListener() {
         @Override
@@ -163,6 +164,11 @@ public class TotallyLikeWhateverHome extends Activity {
         }
     };
 
+    //Vibrate
+    private Vibrator vib;
+    private android.net.Uri notification;
+    private Ringtone ring;
+
     private class CheckFlaggedWordsTask extends AsyncTask<String, Integer, String> {
         /** The system calls this to perform work in a worker thread and
          * delivers it the parameters given to AsyncTask.execute() */
@@ -174,7 +180,14 @@ public class TotallyLikeWhateverHome extends Activity {
                     newFlaggedCount++;
                 }
             }
+            for (String phrase : flaggedPhrases) {
+                int count = (String.format(" %s ", returnedStrings[0])).replace(" ", "  ").
+                        split(String.format(" %s ", phrase.replace(" ", "  "))).length - 1;
+                newFlaggedCount += count;
+            }
             if (newFlaggedCount > flaggedCount) {
+                vib.vibrate(400);
+                ring.play();
                 publishProgress(getResources().getColor(R.color.red));
                 findViewById(R.id.scrolling_area).postDelayed(new Runnable() {
                     @Override
