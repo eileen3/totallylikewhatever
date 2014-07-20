@@ -6,6 +6,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -13,7 +16,12 @@ import android.view.View;
 import android.speech.*;
 import android.widget.TextView;
 import android.os.Vibrator;
+import android.widget.ImageView;
+import android.widget.Button;
+
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 /**
@@ -37,6 +45,10 @@ public class TotallyLikeWhateverHome extends Activity {
         ring = RingtoneManager.getRingtone(getApplicationContext(), notification);
 
         myText = (TextView)findViewById(R.id.text_area);
+        myPace = (TextView)findViewById(R.id.text_pace);
+
+        talking_button = (Button) findViewById(R.id.dummy_button);
+
         flaggedWords = new ArrayList<String>();
         flaggedWords.add("like");
         flaggedWords.add("yeah");
@@ -62,10 +74,17 @@ public class TotallyLikeWhateverHome extends Activity {
         receive.setRecognitionListener(new RecognitionListener() {
             @Override
             public void onBeginningOfSpeech() {
-            }
+                Calendar c = Calendar.getInstance();
+                startTime = c.get(Calendar.SECOND);
+                endTime = null;
 
-            public void onRmsChanged(float rmsdB) {
+                if (talking_animation != null) {
+                    talking_animation.start();
+                } else {
+                    System.out.print("Error!");
+                }
             }
+            public void onRmsChanged(float rmsdB) { }
 
             public void onEndOfSpeech() {
                 buttonEnabled = true;
@@ -76,6 +95,9 @@ public class TotallyLikeWhateverHome extends Activity {
                 myText.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
                 lView.addView(myText);*/
+                Calendar c = Calendar.getInstance();
+                endTime = c.get(Calendar.SECOND);
+                talking_animation.stop();
             }
 
             public void onEvent(int eventType, Bundle params) {
@@ -95,6 +117,12 @@ public class TotallyLikeWhateverHome extends Activity {
                 flaggedCount = 0;
 
                 //lView.addView(myText);
+
+                talking_button.setBackgroundResource(R.drawable.talking);
+                animation = talking_button.getBackground();
+                if (animation instanceof AnimationDrawable) {
+                    talking_animation = (AnimationDrawable) animation;
+                }
             }
 
             public void onResults(Bundle results) {
@@ -106,6 +134,16 @@ public class TotallyLikeWhateverHome extends Activity {
                     new CheckFlaggedWordsTask().execute(returnedStrings.get(0));
                     myText.setText(String.format("You've said a flagged word %d times\n\n%s",
                             flaggedCount, returnedStrings.get(0)));
+
+                    if (endTime != null && startTime != null) {
+                        int duration = endTime - startTime;
+                        double pace = (double) (returnedStrings.get(0).split(" ")).length / duration;
+                        if (pace < 0) {
+                            pace = 0.0;
+                        }
+                        myPace.setText(String.format("Your average pace is %.2f words per second.",
+                                pace));
+                    }
 
                     //lView.addView(myText);
                 } else {
@@ -135,8 +173,13 @@ public class TotallyLikeWhateverHome extends Activity {
         super.onPostCreate(savedInstanceState);
 
     }
-
+    private Integer startTime;
+    private Integer endTime;
+    private Drawable animation;
+    private AnimationDrawable talking_animation;
+    private TextView myPace = null;
     private TextView myText = null;
+    private Button talking_button = null;
     private Context self = this;
     private Activity me = this;
     private SpeechRecognizer receive = SpeechRecognizer.createSpeechRecognizer(this);

@@ -24,6 +24,7 @@
                 android:textSize="25sp"
                 android:gravity="center"
                 android:text="@string/start_inst" />
+
         </ScrollView>
 
         <LinearLayout android:id="@+id/fullscreen_content_controls"
@@ -45,6 +46,26 @@
             android:id="@+id/dummy_button"
             style="?android:attr/borderlessButtonStyle"
             android:layout_gravity="center" />
+
+        <TextView android:id="@+id/text_pace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:keepScreenOn="true"
+            android:textColor="@color/black_overlay"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal|bottom" />
+
+        <ImageView
+            android:id="@+id/talking"
+            android:contentDescription="My Animation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="37dp"
+            android:src="@drawable/talking"
+            android:visibility="invisible"
+            android:layout_gravity="center" />
+
     </FrameLayout>
 
 </FrameLayout>
